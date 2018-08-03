@@ -1,35 +1,49 @@
-# letter-prime
-letter-prime - generate primes for arbitrary letters
+# letter-prime - generate primes for arbitrary letters
+
 (c)2018 by Seishi Takamura
 
-1. Compilation
-Type "make all"
-or
-g++ -O3 gen-string.cpp -o gen-string
-g++ -O3 string-prime.cpp miller-rabin-gmp.cpp -o string-prime -lgmp -lgmpxx
+execution example:
+300-digit-long prime forming "PRIME"(folded every 30 digits)
+111111111111111111111111111111
+000011222211166611911191444441
+011101211121116111911191411111
+011101211121116111991991411111
+000011222211116111919191444411
+011111212111116111911191411111
+011111211211116111911191411111
+011111211121166611911191444441
+111111111111111111111111111111
+111111111111111111111111111111
 
-2. Execution example (ASCII)
-./gen-string bdf_fonts/6x10.bdf TestStr | ./string-prime
-./gen-string bdf_fonts/6x10.bdf TestStr | ./string-prime -nodup
+
+1. Compilation
+    make all
+or
+    g++ -O3 gen-string.cpp -o gen-string
+    g++ -O3 string-prime.cpp miller-rabin-gmp.cpp -o string-prime -lgmp -lgmpxx
+
+1. Execution example (ASCII)
+    ./gen-string bdf_fonts/6x10.bdf TestStr | ./string-prime
+    ./gen-string bdf_fonts/6x10.bdf TestStr | ./string-prime -nodup
 
 "-nodup" option assigns different digit to each character.
 By default, duplicate digits may be assigned.
 
-3. Execution example (Japanese)
+1. Execution example (Japanese)
 You need a JIS-code text and font file. An example to generate the text is:
-echo Š¿Žš | nkf -j > tmp.txt
+    echo Š¿Žš | nkf -j > tmp.txt
 (NKF (network kanji filter, https://ja.osdn.net/projects/nkf/releases/p533)
 should be installed beforehand.)
 Or, use any text editor which is capable of JIS-code editing.
 In the text file, NO ASCII CHARACTERS shall be included.
 Then invoke e.g.,
-./gen-string bdf_fonts/k20m.bdf -j tmp.txt | ./string-prime
+    ./gen-string bdf_fonts/k20m.bdf -j tmp.txt | ./string-prime
 
-4. Prerequisites
+1. Prerequisites
 You need GMP (GNU Multi-Precision Library)
 In Cygwin, install libgmp-devel, libgmp, libgmpxx.
 
-5. Notes
+1. Notes
 o Prime checker
 Miller-rabin-gmp.h and Miller-rabin-gmp.cpp are copied from
 https://github.com/cslarsen/miller-rabin
@@ -43,7 +57,7 @@ deployed in /usr/share/X11/fonts/misc.
 Then obtain pcf2bdf package from
 https://github.com/ganaware/pcf2bdf
 and compile. In my environment, I commented out the line 20 of pcf2bdf.cc:
-#  define _setmode setmode
+    #  define _setmode setmode
 to suppress compilation error.
 
 Then you can directly convert pcf.gz files into bdf file, e.g., 
