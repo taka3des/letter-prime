@@ -1,10 +1,10 @@
 letter-prime
 ====
 
-Generate primes for arbitrary letters
+Generates primes for arbitrary letters
 
-## Example
-300-digit-long prime forming "PRIME"(folded every 30 digits)
+## Demo
+300-digit-long prime forming "PRIME" (folded every 30 digits)
 
     111111111111111111111111111111
     000011222211166611911191444441
@@ -17,19 +17,28 @@ Generate primes for arbitrary letters
     111111111111111111111111111111
     111111111111111111111111111111
 
+![image](https://raw.githubusercontent.com/taka3des/letter-prime/master/prime-example.png)
+
 ## Requirements
 You need GMP (GNU Multi-Precision Library).
 In Cygwin, install libgmp-devel, libgmp, libgmpxx.
 
 ## Usage
-    gen-string bdf_font AnyString | string-prime [-nodup]
-    gen-string bdf_font -j jis_text | string-prime [-nodup]
+letter-prime comes from two commands: `gen-string` and `string-prime`.
+
+    gen-string bdf_font AnyString
+    gen-string bdf_font -j jis_text
+renders the `AnyString` or Japanese characters in `jis_text` with the font specified by `bdf_font` and produces 2-dimensional map.
+
+    string-prime [-nodup]
+reads 2-dimensional map and looks for prime numbers which suit the map.
 `-nodup` option assigns different digit to each character.
 By default, duplicate digits may be assigned to each character..
 
 
 ### Execution example (ASCII)
     ./gen-string bdf_fonts/6x10.bdf PRIME | ../string-prime
+This yields the prime in the Demo section.
 
 ### Execution example (Japanese)
 You need a JIS-code text and Japanese BDF file. An example to generate the text is:
