@@ -4,7 +4,7 @@ letter-prime
 Generates primes for arbitrary letters
 
 ## Demo
-300-digit-long prime forming "PRIME" (folded every 30 digits). See Example (ASCII) how to generate
+300-digit-long prime forming "PRIME" (folded every 30 digits). See Example (ASCII) how to generate.
 
     111111111111111111111111111111
     000011222211166611911191444441
