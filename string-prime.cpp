@@ -2,13 +2,20 @@
 // (c)2018 Seishi Takamura
 #include <iostream>
 #include <ctype.h>
-#include "miller-rabin-gmp.h"
+#include <gmpxx.h>
+//#include "miller-rabin-gmp.h"
 using namespace std;
 
 #define Wmax 512
 #define Hmax 100
 int buf[Hmax][Wmax];
 int width, height, maxnum;
+
+// wrapper
+bool my_prob_prime(const mpz_class n, const size_t rounds)
+{
+	return mpz_millerrabin(n.get_mpz_t(), rounds);
+}
 
 // 0110022
 // 0111020 ‚Ì‚æ‚¤‚È’·•ûŒ`•¶š—ñ‚ğ“Ç‚İ‚Ş
@@ -48,7 +55,7 @@ void doit(int trans[], int depth, int firstdigit, int lastdigit, bool nodup)
 				a = a*10 + trans[buf[j][i]];
 			}
 		}
-		if (prob_prime(a, width*height)) {
+		if (my_prob_prime(a, width*height)) {
 			cout << a << " prime" << endl;
 			for (int j = 0; j < height; j++) {
 				for (int i = 0; i < width; i++) {
@@ -58,9 +65,9 @@ void doit(int trans[], int depth, int firstdigit, int lastdigit, bool nodup)
 			}
 			printf("\n");
 			// twin-prime check
-			if (prob_prime(a-2, width*height))
+			if (my_prob_prime(a-2, width*height))
 				printf("-2 is twin-prime\n");
-			else if (prob_prime(a+2, width*height))
+			else if (my_prob_prime(a+2, width*height))
 				printf("+2 is twin-prime\n");
 		}
 		return;

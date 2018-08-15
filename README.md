@@ -67,11 +67,6 @@ or
 
 
 ## Notes
-### Prime checker
-Miller-rabin-gmp.h and Miller-rabin-gmp.cpp are copied from
-[The Miller-Rabin probabilistic primality test in C++ w/GMP](https://github.com/cslarsen/miller-rabin) in Github.
-Thank you.
-
 ### BDF font generation (ASCII)
 `gen-string` needs a font in BDF format.
 In Cygwin, install "xorg-x11-fonts-misc" package. Then lots of pcf.gz files are
