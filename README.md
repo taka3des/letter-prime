@@ -62,7 +62,7 @@ Then invoke e.g.,
 or
 
     g++ -O3 gen-string.cpp -o gen-string
-    g++ -O3 string-prime.cpp miller-rabin-gmp.cpp -o string-prime -lgmp -lgmpxx
+    g++ -O3 string-prime.cpp -o string-prime -lgmpxx -lgmp
 
 
 
